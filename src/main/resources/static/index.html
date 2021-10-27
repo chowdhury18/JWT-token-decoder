@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+    <style>
+        textarea {
+            font-family: "Lucida Console", Monaco, monospace;
+            font-size: 0.8rem;
+            line-height: 1.2;
+        }
+    </style>
+    <title>JWT Decoder</title>
+</head>
+<body>
+    <h1>JWT Access Token Decoder</h1>
+    <table class="table table-borderless">
+            <thead>
+                <tr>
+                    <th scope="col">Encoded (paste a token here)</th>
+                    <th scope="col">Decoded</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="container p-3 my-3 border">
+                            <h5>Access Token</h5>
+                            <textarea class="form-control" id="accessToken" rows="10"></textarea>
+                        </div>
+                        <div>
+                            <span>Do you want to verify the signature?</span>
+                            <button type="button" value="yes" class="btn btn-primary" onclick="enablePublicKeyTextArea(this)">Yes</button>
+                            <button type="button" value="no" class="btn btn-primary" onclick="enablePublicKeyTextArea(this)">No</button>
+                        </div>
+                        <div class="container p-3 my-3 border">
+                            <h5>Public Key</h5>
+                            <textarea class="form-control" id="pubKey" rows="10" disabled = "disabled"></textarea>
+                        </div>
+                        <button type="button" class="btn btn-secondary" title="decode" onclick="decode()" style="float: right">
+                            Decode
+                        </button>
+                    </td>
+                    <td>
+                        <div class="container p-3 my-3 border">
+                            <h5>Header</h5>
+                            <textarea class="form-control" id="header" rows="5"></textarea>
+                        </div>
+                        <div class="container p-3 my-3 border">
+                            <h5>Payload</h5>
+                            <textarea class="form-control" id="payload" rows="15"></textarea>
+                        </div>
+                        <div>
+                            <button type="button" value="clear all" class="btn btn-danger" onclick="clearAll()" style="float: right">Clear All</button>
+                        </div>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+    <div>
+        <h2>Expiration Time: </h2>
+        <h2 id="exp" style="color: red"></h2>
+    </div>
+</body>
+</html>
